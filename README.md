@@ -1,5 +1,9 @@
 # Making Research Software FAIR with CodeMeta
 
+<!-- QUALITY_BADGE_START -->
+[![Software quality](https://img.shields.io/badge/FAIRness-24%25-red "score: 24% | passed: 10 | failed: 31 | errors: 1")](RSFC_REPORT.md)
+<!-- QUALITY_BADGE_END -->
+
 Mini-site for the **RSECon26 workshop** “Making Research Software FAIR with CodeMeta”.
 
 The site is intentionally built with plain HTML and CSS so that it can be published directly with **GitHub Pages** and edited easily by workshop organisers.
