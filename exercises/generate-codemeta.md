@@ -138,6 +138,8 @@ Ask yourself:
 
 Modify the repository metadata or the `codemeta.json` file as appropriate.
 
+You can use the tool (Autocodemeta)[https://autocodemeta.linkeddata.es/] to complete the file. 
+
 ### Expected result
 
 At this point, you should have a first improved version of your CodeMeta metadata.
@@ -222,9 +224,9 @@ Document what you changed and why.
 
 ---
 
-## Step 7 — Detect metadata pitfalls with RSMetadataCheck
+## Step 7 — Detect metadata pitfalls with RSMetaCheck
 
-Copy the GitHub Action template provided for **RSMetadataCheck** into:
+Copy the GitHub Action template provided for **RSMetaCheck** into:
 
 ```text
 .github/workflows/
@@ -233,7 +235,7 @@ Copy the GitHub Action template provided for **RSMetadataCheck** into:
 For example:
 
 ```text
-.github/workflows/metadata-pitfalls.yml
+.github/workflows/rsmetacheck.yml
 ```
 
 Commit and push the workflow.
