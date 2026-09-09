@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RSECon26 workshop exercise: Hands-on Exercise 1 — Generate, Assess and Improve CodeMeta Metadata">
+  <title>Hands-on Exercise 1 — Generate, Assess and Improve CodeMeta Metadata | RSECon26</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    /* Exercise-specific readability override; style.css remains unchanged. */
+    main code { background: transparent; padding: 0; border-radius: 0; }
+    main pre, main pre code { background: transparent; }
+  </style>
+</head>
+<body>
+  <header id="top" class="hero">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">CodeMeta × RSECon26</a>
+      <div class="nav-links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#agenda">Agenda</a>
+        <a href="../index.html#exercises">Exercises</a>
+        <a href="../index.html#resources">Resources</a>
+      </div>
+    </nav>
+    <div class="hero-content container">
+      <p class="eyebrow">RSECon26 Workshop · Exercise</p>
+      <h1>Hands-on Exercise 1 — Generate, Assess and Improve CodeMeta Metadata</h1>
+      <p class="lead">Hands-on material for the workshop “Making Research Software FAIR with CodeMeta”.</p>
+      <div class="actions">
+        <a class="button primary" href="../index.html#exercises">← Back to exercises</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container">
+      <article class="card">
+        <h1 id="hands-on-exercise-1--generate-assess-and-improve-codemeta-metadata">Hands-on Exercise 1 — Generate, Assess and Improve CodeMeta Metadata</h1>
+        <p><strong>Duration:</strong> 40 minutes</p>
+        <h2 id="goal">Goal</h2>
+        <p>In this exercise, you will use GitHub Actions to generate a <code>codemeta.json</code> file with <strong>SOMEF</strong>, assess the FAIRness of the research software with <strong>RSFC</strong>, detect research software metadata pitfalls with <strong>RSMetadataCheck</strong>, and improve the repository by addressing some of the identified issues.</p>
+        <p>The exercise follows an iterative workflow:</p>
+        <pre class="text"><code>Select repository
+                ↓
+        Generate codemeta.json with SOMEF
+                ↓
+        Review and improve metadata
+                ↓
+        Run FAIR assessment with RSFC
+                ↓
+        Fix one failed FAIR test
+                ↓
+        Detect metadata pitfalls with RSMetadataCheck
+                ↓
+        Fix one pitfall</code></pre>
+        <h2 id="before-you-start">Before you start</h2>
+        <p>You will need:</p>
+        <ul>
+        <li>a GitHub account,</li>
+        <li>a software repository that you can modify,</li>
+        <li>permission to enable and run GitHub Actions in that repository.</li>
+        </ul>
+        <p>You may use your own repository or a sample repository provided by the workshop organisers.</p>
+        <blockquote>
+        <p><strong>Note</strong></p>
+        <p>GitHub Action workflow files must be stored in the <code>.github/workflows/</code> directory of the repository.</p>
+        </blockquote>
+        <hr />
+        <h2 id="step-1--select-a-repository">Step 1 — Select a repository</h2>
+        <p>Choose the repository you want to use during the exercise.</p>
+        <p>Before making any changes, spend a couple of minutes inspecting the information already available in the repository.</p>
+        <p>Look for metadata such as:</p>
+        <ul>
+        <li>software name,</li>
+        <li>description,</li>
+        <li>authors or contributors,</li>
+        <li>licence,</li>
+        <li>version,</li>
+        <li>programming language,</li>
+        <li>keywords or topics,</li>
+        <li>documentation,</li>
+        <li>repository URL,</li>
+        <li>related publications.</li>
+        </ul>
+        <h3 id="checkpoint">Checkpoint</h3>
+        <p>Ask yourself:</p>
+        <ul>
+        <li>Is the repository clearly described?</li>
+        <li>Is the licence explicit?</li>
+        <li>Are authors or contributors identified?</li>
+        <li>Is the software version available?</li>
+        <li>Are keywords or topics present?</li>
+        </ul>
+        <hr />
+        <h2 id="step-2--generate-codemetajson-with-somef">Step 2 — Generate <code>codemeta.json</code> with SOMEF</h2>
+        <p>Copy the GitHub Action template provided by the workshop organisers for <strong>CodeMeta generation with SOMEF</strong>.</p>
+        <p>Place the workflow file inside:</p>
+        <pre class="text"><code>.github/workflows/</code></pre>
+        <p>For example:</p>
+        <pre class="text"><code>.github/workflows/generate-codemeta.yml</code></pre>
+        <p>Commit and push the workflow to GitHub.</p>
+        <p>Then:</p>
+        <ol type="1">
+        <li>Open the <strong>Actions</strong> tab of your repository.</li>
+        <li>Locate the CodeMeta generation workflow.</li>
+        <li>Run the workflow if it is configured for manual execution, or trigger it according to the instructions provided in the template.</li>
+        <li>The workflow will use <strong>SOMEF</strong> to extract software metadata from the repository.</li>
+        <li>Check whether a <code>codemeta.json</code> file has been created or updated.</li>
+        </ol>
+        <h3 id="checkpoint-1">Checkpoint</h3>
+        <p>Confirm that:</p>
+        <ul>
+        <li>the GitHub Action completed successfully,</li>
+        <li>SOMEF generated the metadata,</li>
+        <li>a <code>codemeta.json</code> file was produced,</li>
+        <li>the generated file is valid JSON.</li>
+        </ul>
+        <hr />
+        <h2 id="step-3--analyse-and-adjust-the-generated-codemetajson">Step 3 — Analyse and adjust the generated <code>codemeta.json</code></h2>
+        <p>Open the <code>codemeta.json</code> generated by SOMEF.</p>
+        <p>Compare its content with the information available in your repository.</p>
+        <p>Pay particular attention to fields such as:</p>
+        <ul>
+        <li><code>name</code></li>
+        <li><code>description</code></li>
+        <li><code>author</code></li>
+        <li><code>license</code></li>
+        <li><code>version</code></li>
+        <li><code>codeRepository</code></li>
+        <li><code>programmingLanguage</code></li>
+        <li><code>keywords</code></li>
+        <li><code>dateCreated</code></li>
+        <li><code>dateModified</code></li>
+        <li><code>softwareRequirements</code></li>
+        </ul>
+        <p>Ask yourself:</p>
+        <ul>
+        <li>Is the metadata extracted by SOMEF correct?</li>
+        <li>Is important information missing?</li>
+        <li>Has any information been inferred incorrectly?</li>
+        <li>Could some values be more precise?</li>
+        <li>Does the metadata accurately describe the software?</li>
+        </ul>
+        <p>Modify the repository metadata or the <code>codemeta.json</code> file as appropriate.</p>
+        <p>You can use the tool (Autocodemeta)[<a href="https://autocodemeta.linkeddata.es/]">https://autocodemeta.linkeddata.es/]</a> to complete the file.</p>
+        <h3 id="expected-result">Expected result</h3>
+        <p>At this point, you should have a first improved version of your CodeMeta metadata.</p>
+        <hr />
+        <h2 id="step-4--add-the-rsfc-fair-assessment-github-action">Step 4 — Add the RSFC FAIR Assessment GitHub Action</h2>
+        <p>Copy the GitHub Action template provided for <strong>FAIR assessment with RSFC</strong> into:</p>
+        <pre class="text"><code>.github/workflows/</code></pre>
+        <p>For example:</p>
+        <pre class="text"><code>.github/workflows/fair-assessment.yml</code></pre>
+        <p>Commit and push the workflow.</p>
+        <p>Open the <strong>Actions</strong> tab and locate the RSFC FAIR assessment workflow.</p>
+        <hr />
+        <h2 id="step-5--run-the-fair-assessment-with-rsfc">Step 5 — Run the FAIR Assessment with RSFC</h2>
+        <p>Run the FAIR assessment workflow.</p>
+        <p>The workflow will use <strong>RSFC</strong> to evaluate the FAIRness of the research software.</p>
+        <p>Once the assessment has finished, inspect the results.</p>
+        <p>Identify:</p>
+        <ul>
+        <li>tests that passed,</li>
+        <li>tests that failed,</li>
+        <li>warnings or recommendations,</li>
+        <li>the metadata elements related to each result.</li>
+        </ul>
+        <p>Do not focus only on the final score. The most useful part of the assessment is understanding <strong>why a specific test passed or failed</strong>.</p>
+        <h3 id="checkpoint-2">Checkpoint</h3>
+        <p>Select at least one failed FAIR test and identify:</p>
+        <ol type="1">
+        <li>what the test is checking,</li>
+        <li>why your repository or metadata did not pass it,</li>
+        <li>what change could improve the result.</li>
+        </ol>
+        <hr />
+        <h2 id="step-6--fix-one-failed-fair-test">Step 6 — Fix one failed FAIR test</h2>
+        <p>Choose <strong>one failed RSFC test</strong> that you think can reasonably be addressed during the workshop.</p>
+        <p>Modify the repository or its metadata accordingly.</p>
+        <p>Examples may include:</p>
+        <ul>
+        <li>adding a missing licence,</li>
+        <li>improving the software description,</li>
+        <li>adding an identifier,</li>
+        <li>adding missing author information,</li>
+        <li>adding a repository URL,</li>
+        <li>improving metadata completeness.</li>
+        </ul>
+        <p>Commit and push your changes.</p>
+        <p>Run the RSFC FAIR assessment again.</p>
+        <h3 id="compare-the-results">Compare the results</h3>
+        <p>Check whether:</p>
+        <ul>
+        <li>the selected test now passes,</li>
+        <li>the FAIR score changed,</li>
+        <li>the change affected any other tests.</li>
+        </ul>
+        <p>Document what you changed and why.</p>
+        <hr />
+        <h2 id="step-7--detect-metadata-pitfalls-with-rsmetacheck">Step 7 — Detect metadata pitfalls with RSMetaCheck</h2>
+        <p>Copy the GitHub Action template provided for <strong>RSMetaCheck</strong> into:</p>
+        <pre class="text"><code>.github/workflows/</code></pre>
+        <p>For example:</p>
+        <pre class="text"><code>.github/workflows/rsmetacheck.yml</code></pre>
+        <p>Commit and push the workflow.</p>
+        <p>Run the GitHub Action.</p>
+        <p>The workflow will use <strong>RSMetadataCheck</strong> to detect common research software metadata pitfalls.</p>
+        <p>Inspect the results and identify detected issues such as:</p>
+        <ul>
+        <li>missing metadata,</li>
+        <li>inconsistent metadata,</li>
+        <li>incomplete author information,</li>
+        <li>missing or unclear licence information,</li>
+        <li>missing repository information,</li>
+        <li>weak descriptions,</li>
+        <li>missing links or identifiers,</li>
+        <li>inconsistencies between metadata files.</li>
+        </ul>
+        <h3 id="checkpoint-3">Checkpoint</h3>
+        <p>Choose one pitfall and determine:</p>
+        <ul>
+        <li>why RSMetadataCheck detected it,</li>
+        <li>where the problematic metadata comes from,</li>
+        <li>how it could be corrected.</li>
+        </ul>
+        <hr />
+        <h2 id="step-8--fix-one-detected-pitfall">Step 8 — Fix one detected pitfall</h2>
+        <p>Select <strong>one RSMetadataCheck pitfall</strong> that can be addressed during the session.</p>
+        <p>Modify the relevant metadata or repository configuration.</p>
+        <p>Commit and push your change.</p>
+        <p>Run the RSMetadataCheck workflow again.</p>
+        <p>Check whether the issue has disappeared or changed.</p>
+        <hr />
+        <h1 id="final-result">Final result</h1>
+        <p>By the end of the exercise, you should have:</p>
+        <ul>
+        <li>selected a research software repository,</li>
+        <li>generated a <code>codemeta.json</code> file with <strong>SOMEF</strong> using GitHub Actions,</li>
+        <li>reviewed and improved the generated CodeMeta metadata,</li>
+        <li>executed a FAIR assessment with <strong>RSFC</strong>,</li>
+        <li>understood at least one failed FAIR test,</li>
+        <li>attempted to solve one failed FAIR test,</li>
+        <li>executed <strong>RSMetadataCheck</strong>,</li>
+        <li>understood at least one detected metadata pitfall,</li>
+        <li>attempted to solve one metadata pitfall.</li>
+        </ul>
+        <h2 id="reflection">Reflection</h2>
+        <p>Before finishing, discuss briefly:</p>
+        <ol type="1">
+        <li>Which metadata could SOMEF generate automatically?</li>
+        <li>Which metadata required manual intervention?</li>
+        <li>Was RSFC useful for identifying actionable FAIR improvements?</li>
+        <li>Did RSMetadataCheck identify problems that were not obvious from the FAIR assessment?</li>
+        <li>Which of these checks would you integrate into your normal software development workflow?</li>
+        </ol>
+        <h2 id="optional-challenge">Optional challenge</h2>
+        <p>If you finish early:</p>
+        <ul>
+        <li>solve an additional failed RSFC test,</li>
+        <li>solve an additional RSMetadataCheck pitfall,</li>
+        <li>compare the repository before and after the improvements,</li>
+        <li>inspect whether one change improves both the FAIR assessment and the metadata quality checks.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <strong>Making Research Software FAIR with CodeMeta</strong>
+        <p>RSECon26 workshop materials.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Workshop home</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
