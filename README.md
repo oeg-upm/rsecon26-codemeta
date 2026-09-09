@@ -38,6 +38,22 @@ The workshop is a **180-minute interactive session** combining short presentatio
 |  | Each group presents one interesting or problematic mapping for discussion. |
 | **15 min** | **Wrap-up and discussion** |
 
+## Tools & resources
+
+The following tools and resources are useful during the workshop:
+
+- [CodeMeta](https://codemeta.github.io/) — Vocabulary and project documentation.
+- [AutoCodeMeta](https://autocodemeta.linkeddata.es/) — Generate CodeMeta metadata.
+- [RSMetaCheck](https://github.com/SoftwareUnderstanding/RsMetaCheck) — Research software metadata checks.
+- [sw-metadata-bot](https://github.com/SoftwareUnderstanding/sw-metadata-bot) — Automated metadata feedback.
+- [Software Heritage](https://www.softwareheritage.org/) — Software preservation and archiving.
+- [Mapping template](resources/mapping-template.csv) — CSV template for Exercise 2.
+- [LLM mapping prompt](resources/llm-mapping-prompt.md) — Common prompt for uncertain mappings.
+- [SSSOM Methodology](https://github.com/codemeta/codemeta/tree/sssom-methodology/crosswalks-sssom) — Draft methodology proposed by the CodeMeta group for creating mappings.
+- [SOMEF](https://github.com/KnowledgeCaptureAndDiscovery/somef) — Tool for extracting metadata from repositories; it can export metadata as CodeMeta files.
+- [RSFC](https://github.com/oeg-upm/rsfc) — Tool for assessing the FAIRness of research software.
+
+
 ## Acknowledgements
 
 The workshop materials acknowledge the following projects:
