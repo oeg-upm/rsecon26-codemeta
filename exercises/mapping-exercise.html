@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RSECon26 workshop exercise: Hands-on Exercise 2 — Mapping metadata to CodeMeta">
+  <title>Hands-on Exercise 2 — Mapping metadata to CodeMeta | RSECon26</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    /* Exercise-specific readability override; style.css remains unchanged. */
+    main code { background: transparent; padding: 0; border-radius: 0; }
+    main pre, main pre code { background: transparent; }
+  </style>
+</head>
+<body>
+  <header id="top" class="hero">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">CodeMeta × RSECon26</a>
+      <div class="nav-links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#agenda">Agenda</a>
+        <a href="../index.html#exercises">Exercises</a>
+        <a href="../index.html#resources">Resources</a>
+      </div>
+    </nav>
+    <div class="hero-content container">
+      <p class="eyebrow">RSECon26 Workshop · Exercise</p>
+      <h1>Hands-on Exercise 2 — Mapping metadata to CodeMeta</h1>
+      <p class="lead">Hands-on material for the workshop “Making Research Software FAIR with CodeMeta”.</p>
+      <div class="actions">
+        <a class="button primary" href="../index.html#exercises">← Back to exercises</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container">
+      <article class="card">
+        <h1 id="hands-on-exercise-2--mapping-metadata-to-codemeta">Hands-on Exercise 2 — Mapping metadata to CodeMeta</h1>
+        <p><strong>Duration:</strong> 40 minutes</p>
+        <h2 id="main-goal">Main goal</h2>
+        <p>The goal is to make and justify <strong>mapping decisions</strong>.</p>
+        <p>This is <strong>not</strong> a CodeMeta-generation exercise, and you are not expected to map an entire metadata schema in 40 minutes.</p>
+        <p>Instead, select a representative set of approximately <strong>8–12 properties</strong> from a source schema and determine how they correspond to CodeMeta.</p>
+        <h2 id="central-question">Central question</h2>
+        <blockquote>
+        <p>How do I systematically map metadata from my schema into CodeMeta, and how do I deal with cases where the correspondence is not straightforward?</p>
+        </blockquote>
+        <h2 id="general-workflow">General workflow</h2>
+        <pre class="text"><code>Select source schema
+                ↓
+        Select representative properties
+                ↓
+        Understand source semantics
+                ↓
+        Find potential CodeMeta correspondences
+                ↓
+        Compare definitions
+                ↓
+        Classify the mapping
+                ↓
+        Identify transformations / information loss
+                ↓
+        Document and justify the decision</code></pre>
+        <h2 id="important-rule">Important rule</h2>
+        <p><strong>Do not map based only on property names.</strong></p>
+        <p>Before deciding on a correspondence, inspect:</p>
+        <ul>
+        <li>the property definition,</li>
+        <li>expected values,</li>
+        <li>datatype,</li>
+        <li>cardinality,</li>
+        <li>examples,</li>
+        <li>scope and intended meaning.</li>
+        </ul>
+        <h2 id="suggested-timing">Suggested timing</h2>
+        <h3 id="05-min--choose-schema-and-properties">0–5 min — Choose schema and properties</h3>
+        <p>Form a group and choose a source metadata schema.</p>
+        <p>If you did not bring one, use one of the fallback schemas supplied by the organisers.</p>
+        <p>Select roughly 8–12 representative properties.</p>
+        <h3 id="510-min--understand-the-properties">5–10 min — Understand the properties</h3>
+        <p>For each selected property, examine its semantics.</p>
+        <p>Record:</p>
+        <ul>
+        <li>definition,</li>
+        <li>value/type,</li>
+        <li>cardinality,</li>
+        <li>example,</li>
+        <li>relevant notes.</li>
+        </ul>
+        <h3 id="1025-min--map-to-codemeta">10–25 min — Map to CodeMeta</h3>
+        <p>Search the CodeMeta vocabulary for possible correspondences.</p>
+        <p>For each source property, decide whether the mapping is:</p>
+        <ul>
+        <li>exact or near-exact,</li>
+        <li>partial,</li>
+        <li>broader,</li>
+        <li>narrower,</li>
+        <li>transformation required,</li>
+        <li>ambiguous,</li>
+        <li>no satisfactory mapping.</li>
+        </ul>
+        <p>Document the justification for each decision.</p>
+        <h3 id="2532-min--investigate-difficult-cases">25–32 min — Investigate difficult cases</h3>
+        <p>Select <strong>2–3 uncertain mappings</strong>.</p>
+        <p>You may use the common LLM prompt supplied with the workshop to request a mapping recommendation.</p>
+        <p>Compare the LLM recommendation with your own decision.</p>
+        <p>Ask:</p>
+        <ul>
+        <li>Does the proposed mapping preserve the meaning?</li>
+        <li>Is important information lost?</li>
+        <li>Is a transformation needed?</li>
+        <li>Is the LLM recommendation sufficiently justified?</li>
+        </ul>
+        <h3 id="3240-min--compare-and-discuss">32–40 min — Compare and discuss</h3>
+        <p>Each group should present <strong>one interesting or problematic mapping</strong>, rather than the entire crosswalk.</p>
+        <p>Discussion should focus on:</p>
+        <ul>
+        <li>why the mapping was difficult,</li>
+        <li>alternative mapping options,</li>
+        <li>transformations,</li>
+        <li>possible information loss.</li>
+        </ul>
+        <h2 id="expected-output">Expected output</h2>
+        <p>By the end of the exercise, each group should have:</p>
+        <ul>
+        <li>selected a source metadata schema,</li>
+        <li>examined approximately 8–12 properties,</li>
+        <li>identified possible CodeMeta correspondences,</li>
+        <li>justified the mapping decisions,</li>
+        <li>identified mappings requiring transformations,</li>
+        <li>identified ambiguous or uncertain mappings,</li>
+        <li>identified properties without a satisfactory CodeMeta mapping,</li>
+        <li>considered possible information loss,</li>
+        <li>documented the results as a CodeMeta crosswalk.</li>
+        </ul>
+        <h2 id="template">Template</h2>
+        <p>Use:</p>
+        <p><code>../resources/mapping-template.csv</code></p>
+        <p>The template can be opened in a spreadsheet editor or imported into Google Sheets.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <strong>Making Research Software FAIR with CodeMeta</strong>
+        <p>RSECon26 workshop materials.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Workshop home</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
