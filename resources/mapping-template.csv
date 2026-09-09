@@ -1,2 +1,2 @@
-source_schema,source_property,source_definition,source_datatype,source_cardinality,source_example,codemeta_property,mapping_classification,transformation_required,information_loss,justification,llm_recommendation,final_decision,notes
-,,,,,,,,,,,,,
+codemeta_term,target_term,type_relation,cardinality,comments
+,,,,
